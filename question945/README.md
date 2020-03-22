@@ -25,7 +25,7 @@
 3. 有重复的值就需要向前操作。假如这样一个数组`[1,1,1,1]`,最短不重复应该为`[1,2,3,4]`,也就是是需要将其中三个`1`增加到2,3,4,那么增加的次是也就是`2+3+4-(1+1+1)`。
 4. 也就是说有`n`个重复的`x`,需要增加为不重复的`x,x1,x2...xn`,需要递增`(x1+x2+...+xn)-x(n-1)`
 
-## 实现
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question945/answer_test.go)
 ```go
 func minIncrementForUnique(A []int) int {
 	arr := [80000]int{}
