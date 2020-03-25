@@ -1,4 +1,4 @@
-## 题目：[按摩师](https://leetcode-cn.com/problems/the-masseuse-lcci/)
+## 题目：[三维形体的表面积](https://leetcode-cn.com/problems/surface-area-of-3d-shapes/)
 
 在 `N * N` 的网格上，我们放置一些 `1 * 1 * 1`  的立方体。
 
