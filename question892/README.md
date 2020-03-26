@@ -22,7 +22,7 @@
 >输入：[[1,1,1],[1,0,1],[1,1,1]]
 输出：32
 
-**示例6:**
+**示例5:**
 >输入：[[2,2,2],[2,1,2],[2,2,2]]
 输出：46
 
@@ -34,7 +34,7 @@
 1. `v > 0` 那么地面和顶部可以各贡献`1`的面积
 2. 其余四面的面积，取决于网格中四个方向的高度，也就是`v`的大小
 
-## 实现
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question892/answer_test.go)
 ```go
 func surfaceArea(grid [][]int) int {
 	var ans int
