@@ -26,6 +26,7 @@ func Test_surfaceArea(t *testing.T) {
 
 func surfaceArea(grid [][]int) int {
 	var ans int
+	dt := [4][2]int{{-1, 0}, {1, 0}, {0, 1}, {0, -1}}
 
 	for row, rows := range grid {
 		for col, v := range rows {
@@ -36,32 +37,15 @@ func surfaceArea(grid [][]int) int {
 			// 上下两个面
 			ans += 2
 
-			// 上
-			if row == 0 {
-				ans += v
-			} else if grid[row-1][col] < v {
-				ans += v - grid[row-1][col]
-			}
-
-			// 左
-			if col == len(rows)-1 {
-				ans += v
-			} else if grid[row][col+1] < v {
-				ans += v - grid[row][col+1]
-			}
-
-			// 下
-			if row == len(grid)-1 {
-				ans += v
-			} else if grid[row+1][col] < v {
-				ans += v - grid[row+1][col]
-			}
-
-			// 右
-			if col == 0 {
-				ans += v
-			} else if grid[row][col-1] < v {
-				ans += v - grid[row][col-1]
+			// 其余四个面
+			for _, d := range dt {
+				r := row + d[0]
+				c := col + d[1]
+				if r < 0 || r >= len(grid) || c < 0 || c >= len(grid[0]) {
+					ans += v
+				} else if grid[r][c] < v {
+					ans += v - grid[r][c]
+				}
 			}
 		}
 	}
