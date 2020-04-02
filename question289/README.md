@@ -28,10 +28,10 @@
 >]
 
 ## 思路
-1. 这题太难懂了，读题两小时
-2. 用栈解决。
+1. 先复制出一个数组和定义一个方向数组
+2. 从复制出的数组判断，周围的细胞存活数，然后按照规则确定细胞的结果
 
-## [实现](https://github.com/mzmuer/leetcode/blob/master/question1111/answer_test.go)
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question289/answer_test.go)
 
 ####1. 希尔排序
 ```go
