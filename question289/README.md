@@ -32,10 +32,7 @@
 2. 从复制出的数组判断，周围的细胞存活数，然后按照规则确定细胞的结果
 
 ## [实现](https://github.com/mzmuer/leetcode/blob/master/question289/answer_test.go)
-
-####1. 希尔排序
 ```go
-
 func gameOfLife(board [][]int) {
 	copyBoard := make([][]int, len(board))
 	for i := range board {

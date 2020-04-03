@@ -56,8 +56,6 @@
 2. 用栈解决。
 
 ## [实现](https://github.com/mzmuer/leetcode/blob/master/question1111/answer_test.go)
-
-####1. 希尔排序
 ```go
 func maxDepthAfterSplit(seq string) []int {
 	var d int
