@@ -8,15 +8,15 @@ import (
 )
 
 func Test_movingCount(t *testing.T) {
-	//t.Log(movingCount(2, 3, 1))
-	//
-	//t.Log(movingCount(3, 1, 0))
-	//
-	//t.Log(movingCount(1, 3, 11))
-	//
-	//t.Log(movingCount(11, 8, 16))
+	t.Log(movingCount(2, 3, 1) == 3)
 
-	t.Log(movingCount(16, 8, 4))
+	t.Log(movingCount(3, 1, 0) == 1)
+
+	t.Log(movingCount(1, 3, 11) == 3)
+
+	t.Log(movingCount(11, 8, 16) == 88)
+
+	t.Log(movingCount(16, 8, 4) == 15)
 }
 
 type pair struct {
