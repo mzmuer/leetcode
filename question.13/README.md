@@ -17,7 +17,7 @@
 ## 思路
 1. 使用广度优先搜索，从0,0开始往下和右搜索。
 
-## [实现](https://github.com/mzmuer/leetcode/blob/master/question8/answer_test.go)
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question.13/answer_test.go)
 ```go
 type pair struct {
 	x, y int
