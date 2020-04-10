@@ -23,6 +23,8 @@
 * 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
 
 ## 思路
+1. 从后往前遍历得到每个单词
+2. 拼接成字符串返回
 
 ## [实现](https://github.com/mzmuer/leetcode/blob/master/question151/answer_test.go)
 ```go
