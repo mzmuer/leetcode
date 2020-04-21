@@ -7,10 +7,10 @@ import "testing"
 
 func Test_numIslands(t *testing.T) {
 	g := [][]byte{
-		{byte(1), byte(1), byte(1), byte(1), byte(0)},
-		{byte(1), byte(1), byte(0), byte(1), byte(0)},
-		{byte(1), byte(1), byte(0), byte(0), byte(0)},
-		{byte(0), byte(0), byte(0), byte(0), byte(0)},
+		{'1', '1', '1', '1', '0'},
+		{'1', '1', '0', '1', '0'},
+		{'1', '1', '0', '0', '0'},
+		{'0', '0', '0', '0', '0'},
 	}
 
 	t.Log(numIslands(g))
