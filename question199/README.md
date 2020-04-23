@@ -16,7 +16,7 @@
 ## 思路
 1. 广度优先搜索,遍历每一层，记录最后一个节点就是最后的结果
 
-## [实现](https://github.com/mzmuer/leetcode/blob/master/question200/answer_test.go)
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question199/answer_test.go)
 ```go
 type TreeNode struct {
 	Val   int
