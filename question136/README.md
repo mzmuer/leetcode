@@ -18,7 +18,7 @@
 1. 位操作，使用异或(`XRO`)
 2. 遍历数组，XRO操作每个数字，相同的元素XRO之后结果为0，最后剩下的值就是单一的元素。
 
-## 实现
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question136/answer_test.go)
 ```go
 func singleNumber(nums []int) int {
 	var ret int
