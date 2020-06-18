@@ -8,8 +8,8 @@
      
 ## 思路
 1. 单调栈解法。栈中存储元素的**下标**
-2. 遍历温度数组，如果栈为空，或者元素不小于栈顶元素，就入栈。
-3. 如果小于栈顶元素，就弹出栈顶元素，`i-index` 得到 `ans[index]` 的结果。直到栈为空，或者元素不小于栈顶元素。将`i`入栈
+2. 遍历温度数组，如果栈为空，或者元素`T[i]<=stack[top]`栈顶元素，就入栈。
+3. 如果大于栈顶元素，就弹出栈顶元素，`T[top]` 得到 `ans[T[top]]`的结果`i-T[top]`。直到栈为空，或者元素`T[i]<=stack[top]`栈顶元素。将`i`入栈
 
 ## [实现](https://github.com/mzmuer/leetcode/blob/master/question739/answer_test.go)
 ```go
