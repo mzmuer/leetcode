@@ -18,7 +18,7 @@
 ## 思路
 1. 获取数组的每一位的平方和，直到等于1，或者出现重复的数字（无限循环）。
 
-## [实现](https://github.com/mzmuer/leetcode/blob/master/question202/answer_test.go)实现
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question202/answer_test.go)
 ```go
 func isHappy(n int) bool {
 	var filter = make(map[int]struct{})
