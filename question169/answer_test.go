@@ -1,7 +1,7 @@
 // 169. 多数元素
 // https://leetcode-cn.com/problems/majority-element/
 
-package question1013
+package question169
 
 import "testing"
 
