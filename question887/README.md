@@ -74,7 +74,7 @@ func dp(K, N int) int {
 				}
 			}
 
-			ans = 1 + _mix(_max(dp(K-1, lo-1), dp(K, N-lo)),
+			ans = 1 + _min(_max(dp(K-1, lo-1), dp(K, N-lo)),
 				_max(dp(K-1, hi-1), dp(K, N-hi)))
 		}
 
@@ -88,7 +88,7 @@ func _max(n1, n2 int) int {
 	return int(math.Max(float64(n1), float64(n2)))
 }
 
-func _mix(n1, n2 int) int {
+func _min(n1, n2 int) int {
 	return int(math.Min(float64(n1), float64(n2)))
 }
 ```
