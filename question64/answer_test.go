@@ -30,29 +30,51 @@ func Test_uniquePathsWithObstacles(t *testing.T) {
 }
 
 // n,m的最小路径 = min{(n-1,m),(n,m-1)}
+// TODO: 应该可以用滚动数组来优化
+// func minPathSum(grid [][]int) int {
+// 	n, m := len(grid), len(grid[0])
+// 	f := make([][]int, n)
+// 	for i := 0; i < n; i++ {
+// 		f[i] = make([]int, m)
+// 	}
+//
+// 	for i := 0; i < n; i++ {
+// 		for j := 0; j < m; j++ {
+// 			if i == 0 && j == 0 {
+// 				f[0][0] = grid[0][0]
+// 				continue
+// 			} else if i == 0 {
+// 				f[i][j] = f[i][j-1] + grid[i][j]
+// 			} else if j == 0 {
+// 				f[i][j] = f[i-1][j] + grid[i][j]
+// 			} else {
+// 				f[i][j] = _min(f[i][j-1], f[i-1][j]) + grid[i][j]
+// 			}
+// 		}
+// 	}
+//
+// 	return f[n-1][m-1]
+// }
+
+// 原地修改
 func minPathSum(grid [][]int) int {
 	n, m := len(grid), len(grid[0])
-	f := make([][]int, n)
-	for i := 0; i < n; i++ {
-		f[i] = make([]int, m)
-	}
 
 	for i := 0; i < n; i++ {
 		for j := 0; j < m; j++ {
 			if i == 0 && j == 0 {
-				f[0][0] = grid[0][0]
 				continue
 			} else if i == 0 {
-				f[i][j] = f[i][j-1] + grid[i][j]
+				grid[i][j] = grid[i][j-1] + grid[i][j]
 			} else if j == 0 {
-				f[i][j] = f[i-1][j] + grid[i][j]
+				grid[i][j] = grid[i-1][j] + grid[i][j]
 			} else {
-				f[i][j] = _min(f[i][j-1], f[i-1][j]) + grid[i][j]
+				grid[i][j] = _min(grid[i][j-1], grid[i-1][j]) + grid[i][j]
 			}
 		}
 	}
 
-	return f[n-1][m-1]
+	return grid[n-1][m-1]
 }
 
 func _min(n1, n2 int) int {
