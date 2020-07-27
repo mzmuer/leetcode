@@ -16,7 +16,7 @@
 
      
 ## 思路
-1. 只要找到任意一种`s`在`t`中出现的方式就可以了。
+1. 只要找到任意一种`s`在`t`中出现的方式就可以了,所以只用贪心的去匹配最考前的值，就是最优的策略。
 2. 遍历`t`,如果有和s中匹配的字母，那么`s`的`index`向前移动。直到`index`移动到`s`的结尾。那么`s`就是`t`的子数组。
 
 ## [实现](https://github.com/mzmuer/leetcode/blob/master/question392/answer_test.go)
