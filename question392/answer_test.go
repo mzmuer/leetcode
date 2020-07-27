@@ -14,19 +14,16 @@ func Test_isSubsequence(t *testing.T) {
 }
 
 func isSubsequence(s string, t string) bool {
-	l := len(s)
-	if l == 0 {
-		return true
-	}
+	var (
+		l   = len(s)
+		idx = 0
+	)
 
-	idx := 0
-	for i := 0; i < len(t); i++ {
+	for i := 0; i < len(t) && idx < l; i++ {
 		if t[i] == s[idx] {
-			if idx++; idx == l {
-				return true
-			}
+			idx++
 		}
 	}
 
-	return false
+	return idx == l
 }

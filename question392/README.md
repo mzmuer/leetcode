@@ -16,25 +16,23 @@
 
      
 ## 思路
-1. 遍历`t`,如果有和s中匹配的字母，那么`s`的`index`向前移动。直到`index`移动到`s`的结尾。那么`s`就是`t`的子数组。
+1. 只要找到任意一种`s`在`t`中出现的方式就可以了。
+2. 遍历`t`,如果有和s中匹配的字母，那么`s`的`index`向前移动。直到`index`移动到`s`的结尾。那么`s`就是`t`的子数组。
 
 ## [实现](https://github.com/mzmuer/leetcode/blob/master/question392/answer_test.go)
 ```go
 func isSubsequence(s string, t string) bool {
-	l := len(s)
-	if l == 0 {
-		return true
-	}
+	var (
+		l   = len(s)
+		idx = 0
+	)
 
-	idx := 0
-	for i := 0; i < len(t); i++ {
+	for i := 0; i < len(t) && idx < l; i++ {
 		if t[i] == s[idx] {
-			if idx++; idx == l {
-				return true
-			}
+			idx++
 		}
 	}
 
-	return false
+	return idx == l
 }
 ```
