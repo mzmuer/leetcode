@@ -1,38 +1,40 @@
-## 题目：[判断子序列](https://leetcode-cn.com/problems/is-subsequence/)
+## 题目：[整数拆分](https://leetcode-cn.com/problems/integer-break/)
 
-给定字符串 **s** 和 **t** ，判断 **s** 是否为 **t** 的子序列。
-
-你可以认为 **s** 和 **t** 中仅包含英文小写字母。字符串 **t** 可能会很长（长度 ~= 500,000），而 **s** 是个短字符串（长度 <=100）。
-
-字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，`"ace"`是`"abcde"`的一个子序列，而`"aec"`不是）。
+给定一个正整数 n，将其拆分为至少两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。
 
 示例 1:  
->**s** = `"abc"`, **t** = `"ahbgdc"`  
->返回 true.
+>输入: 2  
+>输出: 1  
+>解释: 2 = 1 + 1, 1 × 1 = 1。  
 
 示例 2:  
->**s** = `"axc"`, **t** = `"ahbgdc"`  
-返回 `false`.
+>输入: 10  
+>输出: 36  
+>解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36。  
 
+**说明**: 你可以假设 n 不小于 2 且不大于 58。
      
 ## 思路
-1. 只要找到任意一种`s`在`t`中出现的方式就可以了,所以只用贪心的去匹配最考前的值，就是最优的策略。
-2. 遍历`t`,如果有和s中匹配的字母，那么`s`的`index`向前移动。直到`index`移动到`s`的结尾。那么`s`就是`t`的子数组。
+1. 对于一个整数n可以拆分为`j`和`n-j`，那么`j`可能的范围为`[1,n-1]`
+2. 可以得出状态转移方程 `dp[n] = max(j*(n-j), j*dp[n-j])`
+3. 要得到最大的`dp[n]`，需要对`j`可能范围内的每一个值计算，得到最大的值。
 
-## [实现](https://github.com/mzmuer/leetcode/blob/master/question392/answer_test.go)
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question343/answer_test.go)
 ```go
-func isSubsequence(s string, t string) bool {
-	var (
-		l   = len(s)
-		idx = 0
-	)
-
-	for i := 0; i < len(t) && idx < l; i++ {
-		if t[i] == s[idx] {
-			idx++
+func integerBreak(n int) int {
+	dp := make([]int, n+1)
+	for i := 2; i <= n; i++ {
+		curMax := 0
+		for j := 1; j < i; j++ {
+			curMax = _max(curMax, _max(j*(i-j), j*dp[i-j]))
 		}
+		dp[i] = curMax
 	}
 
-	return idx == l
+	return dp[n]
+}
+
+func _max(n1, n2 int) int {
+	return int(math.Max(float64(n1), float64(n2)))
 }
 ```
