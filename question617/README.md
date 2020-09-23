@@ -31,7 +31,7 @@
     * 如果对应的节点有一个为空，合并后的节点为不为空的节点
     * 如果两个节点都不为空，合并后的节点为两个节点的和，以及两个节点的左右子节点合并后的节点。
 
-## 实现
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question617/answer_test.go)
 ```go
 func mergeTrees(t1 *TreeNode, t2 *TreeNode) *TreeNode {
 	if t1 == nil {
