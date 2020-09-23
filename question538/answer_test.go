@@ -31,8 +31,8 @@ func Test_diameterOfBinaryTree(t *testing.T) {
 	}
 
 	// morrisTraversal(t1)
-	reverseMorrisTraversal(t1)
-	// t.Log(convertBST(t1))
+	// reverseMorrisTraversal(t1)
+	t.Log(convertBST(t1))
 }
 
 type TreeNode struct {
@@ -91,7 +91,7 @@ func convertBST(root *TreeNode) *TreeNode {
 }
 
 // 中序遍历
-func morrisTraversal(root *TreeNode) {
+func InorderMorrisTraversal(root *TreeNode) {
 	var (
 		cur  = root
 		prev *TreeNode
@@ -133,7 +133,7 @@ func morrisTraversal(root *TreeNode) {
 }
 
 // 反向中序遍历
-func reverseMorrisTraversal(root *TreeNode) {
+func reverseInorderMorrisTraversal(root *TreeNode) {
 	var (
 		cur  = root
 		prev *TreeNode
