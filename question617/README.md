@@ -1,77 +1,48 @@
-## 题目：[岛屿的最大面积](https://leetcode-cn.com/problems/max-area-of-island/)
+## 题目：[合并二叉树](https://leetcode-cn.com/problems/merge-two-binary-trees/)
 
-给定一个包含了一些 0 和 1的非空二维数组 `grid` , 一个 岛屿 是由四个方向 (水平或垂直) 的 `1` (代表土地) 构成的组合。你可以假设二维矩阵的四个边缘都被水包围着。
+给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
 
-找到给定的二维数组中最大的岛屿面积。(如果没有岛屿，则返回面积为0。)
+你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。
 
 **示例1:**
->[[0,0,1,0,0,0,0,1,0,0,0,0,0],  
- [0,0,0,0,0,0,0,1,1,1,0,0,0],  
- [0,1,1,0,1,0,0,0,0,0,0,0,0],  
- [0,1,0,0,1,1,0,0,1,0,1,0,0],  
- [0,1,0,0,1,1,0,0,1,1,1,0,0],  
- [0,0,0,0,0,0,0,0,0,0,1,0,0],  
- [0,0,0,0,0,0,0,1,1,1,0,0,0],  
- [0,0,0,0,0,0,0,1,1,0,0,0,0]]  
+>输入: 
+>
+> 	    Tree 1                     Tree 2                  
+>           1                         2                          
+>          / \                       / \                          
+>         3   2                     1   3                        
+>        /                           \   \                      
+>       5                             4   7                  
+> 输出: 
+> 合并后的树:
+>
+> 	     3
+> 	    / \
+> 	   4   5
+> 	  / \   \ 
+> 	 5   4   7
+>
 
-对于上面这个给定矩阵应返回 `6`。注意答案不应该是11，因为岛屿只能包含水平或垂直的四个方向的‘1’。
-
-**示例2:**
->[[0,0,0,0,0,0,0,0]]
-
-对于上面这个给定的矩阵, 返回 `0`。
-
-注意: 给定的矩阵`grid` 的长度和宽度都不超过 50。
+**注意:** 合并必须从两个树的根节点开始。
      
 ## 思路
-1. 遍历矩阵，遇到陆地就向上下左右四个方向递归
-2. 避免重复的递归，经过的点都设置为0
+1. 深度优先，递归回溯。
+    * 如果对应的节点都为空，合并后的节点为空
+    * 如果对应的节点有一个为空，合并后的节点为不为空的节点
+    * 如果两个节点都不为空，合并后的节点为两个节点的和，以及两个节点的左右子节点合并后的节点。
 
 ## 实现
 ```go
-func maxAreaOfIsland(grid [][]int) int {
-	var res int
-
-	for row, rows := range grid {
-		for col, v := range rows {
-			if v != 1 {
-				continue
-			}
-
-			tmp := dp(row, col, grid)
-			if res < tmp {
-				res = tmp
-			}
-		}
+func mergeTrees(t1 *TreeNode, t2 *TreeNode) *TreeNode {
+	if t1 == nil {
+		return t2
+	} else if t2 == nil {
+		return t1
 	}
 
-	return res
-}
+	left := mergeTrees(t1.Left, t2.Left)
+	right := mergeTrees(t1.Right, t2.Right)
 
-func dp(row, col int, grid [][]int) int {
-	grid[row][col] = 0
-	var res = 1
-
-	// 左
-	if col > 0 && grid[row][col-1] == 1 {
-		res += dp(row, col-1, grid)
-	}
-
-	// 上
-	if row > 0 && grid[row-1][col] == 1 {
-		res += dp(row-1, col, grid)
-	}
-
-	// 右
-	if col < len(grid[0])-1 && grid[row][col+1] == 1 {
-		res += dp(row, col+1, grid)
-	}
-
-	// 下
-	if row < len(grid)-1 && grid[row+1][col] == 1 {
-		res += dp(row+1, col, grid)
-	}
-
-	return res
+	return &TreeNode{Val: t1.Val + t2.Val, Left: left, Right: right}
 }
 ```
