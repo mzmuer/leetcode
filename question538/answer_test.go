@@ -91,7 +91,7 @@ func convertBST(root *TreeNode) *TreeNode {
 }
 
 // 中序遍历
-func InorderMorrisTraversal(root *TreeNode) {
+func inorderMorrisTraversal(root *TreeNode) {
 	var (
 		cur  = root
 		prev *TreeNode
