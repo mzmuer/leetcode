@@ -1,7 +1,7 @@
-// 114. 二叉树展开为链表
-// https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
+// 141. 环形链表
+// https://leetcode-cn.com/problems/linked-list-cycle/
 
-package question114
+package question141
 
 import (
 	"fmt"

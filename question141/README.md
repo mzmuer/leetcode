@@ -1,4 +1,4 @@
-## 题目：[二叉树展开为链表](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/)
+## 题目：[环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)
 
 给定一个链表，判断链表中是否有环。
 
@@ -35,7 +35,7 @@
 1. 使用快慢指针，当慢指针和快指针相等时，链表中一定有环
 2. 当快指针为空时，链表中一定没有环
 
-## [实现](https://github.com/mzmuer/leetcode/blob/master/question114/answer_test.go)
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question141/answer_test.go)
 ```go
 func hasCycle(head *ListNode) bool {
 	if head == nil || head.Next == nil {
