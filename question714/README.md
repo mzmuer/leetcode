@@ -54,15 +54,15 @@ func maxProfit(prices []int, fee int) int {
 ## 思路二
 动态规划：
 1. `dp[i][0]` = 第 `i` 天，不持有股票的最大收益。  `dp[i][1]` = 第 `i` 天持有股票的最大收益
-2. 第 i 天，不持有股票状态转移方程：
-    2.1 前一天持有股票，卖出 `dp[i][0] = dp[i-1][1]+prices[i]`。 
+2. 第 i 天，不持有股票状态转移方程：  
+    2.1 前一天持有股票，卖出 `dp[i][0] = dp[i-1][1]+prices[i]`   
     2.2 前一天没有持有股票，不操作 `dp[i][0] = dp[i-1][0]`
-3. 第 i 天，持有状态转移方程：
-    3.1 前一天持有股票， 不操作 `dp[i][1] = dp[i-1][1]`
+3. 第 i 天，持有状态转移方程：  
+    3.1 前一天持有股票， 不操作 `dp[i][1] = dp[i-1][1]`  
     3.2 前一天不持有股票，买入 `dp[i][1] = dp[i-1][0] - prices[i]`
 
-4. 第 i 天，获得最大利润的状态转移方程：
-    不持有股票的最大利润：`dp[i][0] = max{dp[i-1][0], dp[i-1][1]+prices[i]-fee}`
+4. 第 i 天，获得最大利润的状态转移方程：  
+    不持有股票的最大利润：`dp[i][0] = max{dp[i-1][0], dp[i-1][1]+prices[i]-fee}`  
     持有股票的最大利润：`dp[i][1] = max{dp[i-1][1], dp[i-1][0]-prices[i]}`
     
 ## [实现](https://github.com/mzmuer/leetcode/blob/master/question714/answer_test.go)
