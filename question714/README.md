@@ -30,7 +30,7 @@
 3. 如果遇到价格 `prices[i] > buy`, 就卖出 获得利润 `prices[i] - buy`；但是此时获得利润可能不是最高的利润。  
 所以后面价格继续上涨，应该用更高的价格卖出。设置`buy = prices[i]`,后面价格上涨的利润为 `prices[i+n] - buy`。 重复2和3。
 
-## [实现](https://github.com/mzmuer/leetcode/blob/master/question。714/answer_test.go)
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question714/answer_test.go)
 ```go
 func maxProfit(prices []int, fee int) int {
 	var (
@@ -65,7 +65,7 @@ func maxProfit(prices []int, fee int) int {
     不持有股票的最大利润：`dp[i][0] = max{dp[i-1][0], dp[i-1][1]+prices[i]-fee}`
     持有股票的最大利润：`dp[i][1] = max{dp[i-1][1], dp[i-1][0]-prices[i]}`
     
-## [实现](https://github.com/mzmuer/leetcode/blob/master/question。714/answer_test.go)
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question714/answer_test.go)
 ```go
 func maxProfit(prices []int, fee int) int {
 	// n := len(prices)

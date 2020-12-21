@@ -22,6 +22,7 @@ func Test_maxProfit(t *testing.T) {
 	t.Log("ans", res, res == 8)
 }
 
+// 动态规划
 func maxProfit(prices []int, fee int) int {
 	// n := len(prices)
 	// var dp = make([][2]int, n)
@@ -50,6 +51,7 @@ func _max(n1, n2 int) int {
 	return int(math.Max(float64(n1), float64(n2)))
 }
 
+// 贪心
 // func maxProfit(prices []int, fee int) int {
 // 	var (
 // 		buy = prices[0] + fee
