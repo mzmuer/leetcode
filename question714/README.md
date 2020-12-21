@@ -23,13 +23,14 @@
 * `0 < prices[i] < 50000`
 * `0 <= fee < 50000`
 
-## 思路
+## 思路一
+贪心算法：
 1. 假设买入价格为`buy = prices[i]+fee`
 2. 如果遇到更低买入的价格(`prices[i]+fee`)那么就把 `buy` 替换为更低的买入价格
 3. 如果遇到价格 `prices[i] > buy`, 就卖出 获得利润 `prices[i] - buy`；但是此时获得利润可能不是最高的利润。  
 所以后面价格继续上涨，应该用更高的价格卖出。设置`buy = prices[i]`,后面价格上涨的利润为 `prices[i+n] - buy`。 重复2和3。
 
-## 实现
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question。714/answer_test.go)
 ```go
 func maxProfit(prices []int, fee int) int {
 	var (
@@ -47,5 +48,50 @@ func maxProfit(prices []int, fee int) int {
 	}
 
 	return ans
+}
+```
+
+## 思路二
+动态规划：
+1. `dp[i][0]` = 第 `i` 天，不持有股票的最大收益。  `dp[i][1]` = 第 `i` 天持有股票的最大收益
+2. 第 i 天，不持有股票状态转移方程：
+    2.1 前一天持有股票，卖出 `dp[i][0] = dp[i-1][1]+prices[i]`。 
+    2.2 前一天没有持有股票，不操作 `dp[i][0] = dp[i-1][0]`
+3. 第 i 天，持有状态转移方程：
+    3.1 前一天持有股票， 不操作 `dp[i][1] = dp[i-1][1]`
+    3.2 前一天不持有股票，买入 `dp[i][1] = dp[i-1][0] - prices[i]`
+
+4. 第 i 天，获得最大利润的状态转移方程：
+    不持有股票的最大利润：`dp[i][0] = max{dp[i-1][0], dp[i-1][1]+prices[i]-fee}`
+    持有股票的最大利润：`dp[i][1] = max{dp[i-1][1], dp[i-1][0]-prices[i]}`
+    
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question。714/answer_test.go)
+```go
+func maxProfit(prices []int, fee int) int {
+	// n := len(prices)
+	// var dp = make([][2]int, n)
+	// dp[0][1] = -prices[0]
+	//
+	// for i := 1; i < n; i++ {
+	// 	dp[i][0] = _max(dp[i-1][0], dp[i-1][1]+prices[i]-fee)
+	// 	dp[i][1] = _max(dp[i-1][1], dp[i-1][0]-prices[i])
+	// }
+	//
+	// return dp[n-1][0]
+
+	// 剪枝
+	n := len(prices)
+	var dp = [2]int{0, -prices[0]}
+
+	for i := 1; i < n; i++ {
+		dp[0] = _max(dp[0], dp[1]+prices[i]-fee)
+		dp[1] = _max(dp[1], dp[0]-prices[i])
+	}
+
+	return dp[0]
+}
+
+func _max(n1, n2 int) int {
+	return int(math.Max(float64(n1), float64(n2)))
 }
 ```
