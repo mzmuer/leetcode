@@ -79,7 +79,7 @@ func maxProfit(prices []int, fee int) int {
 	//
 	// return dp[n-1][0]
 
-	// 剪枝
+	// 滚动数组
 	n := len(prices)
 	var dp = [2]int{0, -prices[0]}
 
