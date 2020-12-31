@@ -4,7 +4,6 @@
 package question1046
 
 import (
-	"math"
 	"testing"
 )
 
@@ -18,20 +17,19 @@ func lastStoneWeight(stones []int) int {
 	bigHeap(stones)
 
 	for {
-		n1 := pop(&stones)
-		n2 := pop(&stones)
+		n1, n2 := pop(&stones), pop(&stones)
 		if n1 == 0 || n2 == 0 {
 			return n1
 		}
 
-		if x := int(math.Abs(float64(n1 - n2))); x > 0 {
+		if x := n1 - n2; x > 0 {
 			push(&stones, x)
 		}
 	}
 }
 
+// 初始化为大根堆
 func bigHeap(arr []int) {
-	// 初始化堆
 	for i := len(arr) - 1; i >= 0; i-- {
 		down(arr, i, len(arr))
 	}
@@ -77,6 +75,7 @@ func down(arr []int, i, l int) {
 	arr[i] = tmp
 }
 
+// 堆节点上升
 func up(arr []int, j int) {
 	tmp := arr[j]
 	for {
