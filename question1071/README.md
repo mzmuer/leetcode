@@ -21,7 +21,7 @@
 2. `X`的长度肯定是len(str1)和len(str2)的最大公约数
 3. 判断最大公约数长度的前缀是否能组成str1和str2
 
-## 实现
+## [实现](https://github.com/mzmuer/leetcode/blob/master/question1071/answer_test.go)
 ```go
 func gcdOfStrings(str1 string, str2 string) string {
 	T := str1[:_gcd(len(str1), len(str2))]
