@@ -43,12 +43,6 @@
 ## 思路一
 1. 用`.`来分割字符串，把每一节转换为数字进行比较，直接得出结果  
 
-## 思路二
-1. 二分查找。
-2. 如果`nums[mid] < nums[high]`，那么mid右边的部分就没有意义，`high = mid`。
-3. 如果`nums[mid] > nums[high]`，你那么mid左边的部分就没有意义,`low = mid+1`。
-4. 如果`nums[mid] == nums[high]`，那么不知道最小值在左边还是右边，因为有相同值冗余，`hihg--`
-
 ## [实现](https://github.com/mzmuer/leetcode/blob/master/question165/answer_test.go)
 ```go
 func compareVersion(version1 string, version2 string) int {
