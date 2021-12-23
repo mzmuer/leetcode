@@ -22,7 +22,7 @@ func Test_countCharacters(t *testing.T) {
 }
 
 //1 <= words.length <= 1000
-//1 <= words[i].length, chars.length <= 100
+//1 <= words[i].length, chars.length <= 100
 //所有字符串中都仅包含小写英文字母
 func countCharacters(words []string, chars string) int {
 	alphabet := [26]int{}

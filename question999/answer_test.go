@@ -32,8 +32,8 @@ func Test_numRookCaptures(t *testing.T) {
 }
 
 //board.length == board[i].length == 8
-//board[i][j] 可以是 'R'，'.'，'B' 或 'p'
-//只有一个格子上存在 board[i][j] == 'R'
+//board[i][j] 可以是 'R'，'.'，'B' 或 'p'
+//只有一个格子上存在 board[i][j] == 'R'
 func numRookCaptures(board [][]byte) int {
 	var ans int
 	dt := [4][2]int{{-1, 0}, {1, 0}, {0, 1}, {0, -1}}
