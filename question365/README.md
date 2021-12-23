@@ -18,7 +18,8 @@
 >输出: False
      
 ## 思路
-1. [贝祖定理](https://baike.baidu.com/item/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/5186593?fromtitle=%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86&fromid=5185441)
+1. [贝祖定理](https://baike.baidu.com/item/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/5186593?fromtitle=%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86&fromid=5185441)  
+即：需要`z` 是 `x 和 y` 的 `最大公约数`的倍数。
 
 ## 实现
 ```go

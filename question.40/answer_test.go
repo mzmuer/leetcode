@@ -41,10 +41,12 @@ func getLeastNumbers(arr []int, k int) []int {
 
 // heap
 func sortHeap(arr []int) {
+	// 初始化堆
 	for i := len(arr)/2 - 1; i >= 0; i-- {
 		adjustHeap(arr, i, len(arr))
 	}
 
+	// 升序排序
 	for j := len(arr) - 1; j > 0; j-- {
 		arr[0], arr[j] = arr[j], arr[0]
 		adjustHeap(arr, 0, j) // 重新对堆进行调整
